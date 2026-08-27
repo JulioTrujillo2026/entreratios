@@ -1,0 +1,570 @@
+<title>ENTRERATIOS N° 8</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* ENTRERATIOS — revista técnica de DMG. Tema editorial único (claro con hero navy), colores explícitos. */
+:root{
+  --bg:#F6F9FC; --paper:#FFFFFF; --ink:#13233A; --muted:#57697F;
+  --navy:#023E7D; --deep:#001D4A; --blue:#0466C8; --blue-soft:#E4EEFA;
+  --line:#D8E2EE; --teal:#0E9594; --amber:#B97F1D; --good:#1D7A46; --bad:#B4232A;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "IBM Plex Sans",system-ui,sans-serif;}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px 70px;}
+p{max-width:72ch}
+strong{font-weight:600}
+h2{font:800 30px/1.15 "Archivo",sans-serif;color:var(--navy);margin:1.6em 0 .4em;text-wrap:balance}
+h3{font:700 19px/1.3 "Archivo",sans-serif;color:var(--ink);margin:1.5em 0 .5em}
+.kicker{font:700 11.5px/1 "Archivo",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);}
+.muted{color:var(--muted)}
+.ref{display:inline-block;font:600 10.5px/1 "Archivo";letter-spacing:.08em;text-transform:uppercase;color:var(--amber);background:#F8EFD9;border-radius:4px;padding:4px 7px;vertical-align:middle}
+
+/* HERO */
+header.hero{background:linear-gradient(140deg,var(--deep) 0%,#023E7D 62%,#0353A6 120%);color:#F2F7FC;padding:46px 20px 40px;}
+.hero-in{max-width:960px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:flex-end;gap:28px;justify-content:space-between}
+.hero img.logo{display:block;height:110px;width:auto;max-width:100%}
+.hero .num{font:800 88px/0.9 "Archivo",sans-serif;color:#3D8DE0;}
+.hero .num small{display:block;font:700 12px/1.4 "Archivo";letter-spacing:.2em;color:#9FC3EA;text-transform:uppercase}
+.hero .strap{flex-basis:100%;border-top:1px solid rgba(255,255,255,.22);padding-top:14px;font-size:14.5px;color:#C9DCF0;display:flex;flex-wrap:wrap;gap:8px 26px}
+nav.toc{position:sticky;top:0;z-index:40;background:#FFFFFF;border-bottom:1px solid var(--line);box-shadow:0 1px 6px rgba(2,62,125,.06);padding:0 20px}
+nav.toc .in{max-width:960px;margin:0 auto;display:flex;gap:4px;overflow-x:auto}
+nav.toc a{font:700 12.5px/1 "Archivo";letter-spacing:.03em;color:var(--muted);text-decoration:none;padding:14px 12px;white-space:nowrap;border-bottom:3px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--navy);border-color:var(--blue);outline:none}
+.seg{font:700 11px/1 "Archivo";letter-spacing:.14em;text-transform:uppercase;background:var(--blue-soft);color:var(--navy);padding:6px 10px;border-radius:4px;display:inline-block;margin:34px 0 6px}
+article{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:30px 32px 34px;margin:14px 0 8px}
+.lead{font-size:17.5px;color:#2A3C55}
+
+/* TIPS stepper */
+.tips-nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 14px}
+.tips-nav button{font:700 13px/1 "Archivo";border:1.5px solid var(--line);background:#fff;color:var(--muted);border-radius:99px;padding:9px 13px;cursor:pointer}
+.tips-nav button:hover{border-color:var(--blue);color:var(--navy)}
+.tips-nav button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.tip-panel{border:1px solid var(--line);border-radius:10px;padding:20px 22px;background:#FBFDFF}
+.tip-panel h3{margin-top:0}
+.tip-meta{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 2px}
+.chip{font:600 11.5px/1 "Archivo";letter-spacing:.05em;background:var(--blue-soft);color:var(--navy);border-radius:4px;padding:5px 8px}
+.chip.warn{background:#F8EFD9;color:var(--amber)}
+.stepper{display:flex;justify-content:space-between;margin-top:16px}
+.stepper button{font:700 13px "Archivo";border:none;background:none;color:var(--blue);cursor:pointer;padding:8px 4px}
+.stepper button:disabled{color:#B9C6D5;cursor:default}
+
+/* DEMO montante */
+.demo{border:1.5px solid var(--navy);border-radius:12px;overflow:hidden;margin:18px 0 6px;background:#fff}
+.demo .bar{background:var(--deep);color:#DCE9F7;font:600 12.5px/1.5 "Archivo";padding:10px 14px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.demo .bar .ref{background:rgba(255,255,255,.12);color:#F0C36D}
+.demo-body{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(240px,1fr);gap:0}
+@media(max-width:760px){.demo-body{grid-template-columns:1fr}}
+.plan-wrap{padding:10px;overflow-x:auto}
+svg.plan{display:block;width:100%;height:auto;touch-action:none}
+.costbox{border-left:1px solid var(--line);padding:16px 18px;display:flex;flex-direction:column;gap:10px;background:#FBFDFF}
+@media(max-width:760px){.costbox{border-left:none;border-top:1px solid var(--line)}}
+.costbox table{width:100%;border-collapse:collapse;font-size:13.5px}
+.costbox td{padding:6px 4px;border-bottom:1px solid var(--line)}
+.costbox td:last-child{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.big-delta{border-radius:10px;padding:12px 14px;font:800 20px/1.2 "Archivo";text-align:center}
+.big-delta small{display:block;font:600 11.5px/1.5 "IBM Plex Sans";letter-spacing:.04em}
+.d-up{background:#FBE9EA;color:var(--bad)} .d-ok{background:#E4F3EA;color:var(--good)}
+.demo-btns{display:flex;gap:8px}
+.demo-btns button{flex:1;font:700 12.5px "Archivo";border:1.5px solid var(--navy);background:#fff;color:var(--navy);border-radius:8px;padding:9px 8px;cursor:pointer}
+.demo-btns button:hover{background:var(--blue-soft)}
+.hint{font-size:12.5px;color:var(--muted)}
+
+/* Dashboard cuadros */
+.cuadros{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px;margin:16px 0}
+.cuadro{border:1px solid var(--line);border-radius:10px;background:#FBFDFF;padding:16px 18px}
+.cuadro h4{font:700 14.5px/1.35 "Archivo";margin:0 0 2px;color:var(--navy)}
+.cuadro .sub{font-size:12px;color:var(--muted);margin-bottom:10px}
+.cuadro.wide{grid-column:1/-1}
+.hbar{display:grid;grid-template-columns:130px 1fr 64px;align-items:center;gap:8px;margin:7px 0;font-size:13px}
+.hbar .track{background:#EAF1F8;border-radius:4px;height:16px;position:relative}
+.hbar .fill{position:absolute;inset:0 auto 0 0;border-radius:4px}
+.hbar .val{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;font-size:12.5px}
+.legend{display:flex;gap:16px;font-size:12.5px;color:var(--muted);margin:4px 0 10px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+table.data{width:100%;border-collapse:collapse;font-size:13px}
+table.data th{font:600 11.5px/1.4 "Archivo";letter-spacing:.04em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:2px solid var(--line)}
+table.data td{padding:7px 8px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+table.data td:last-child, table.data th:last-child{text-align:right}
+table.data tr:hover td{background:var(--blue-soft)}
+
+/* Terminal */
+.term{background:#0C1626;border-radius:12px;overflow:hidden;margin:18px 0;border:1px solid #22334D}
+.term .tbar{background:#152238;padding:10px 14px;display:flex;align-items:center;gap:8px}
+.term .dot{width:11px;height:11px;border-radius:50%}
+.term .tbar span.title{font:600 12px var(--mono);color:#8FA5BE;margin-left:8px}
+.term .body{padding:18px 18px 22px;font:13.5px/1.7 var(--mono);color:#D5E3F2;min-height:280px;white-space:pre-wrap}
+.term .u{color:#7FC8FF}
+.term .c{color:#9BE8C5}
+.term .dim{color:#5E7692}
+.term .cursor{display:inline-block;width:8px;height:16px;background:#7FC8FF;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.replay{font:700 13px "Archivo";border:none;background:var(--blue);color:#fff;border-radius:8px;padding:10px 16px;cursor:pointer;margin:4px 0 0}
+.replay:hover{background:#0353A6}
+.miniapp{border:1.5px solid var(--blue);border-radius:12px;background:#fff;padding:16px 18px;max-width:520px;margin:14px 0 4px;opacity:0;transform:translateY(8px);transition:all .6s ease}
+.miniapp.show{opacity:1;transform:none}
+.miniapp h4{font:800 15px "Archivo";color:var(--navy);margin:0 0 2px}
+.miniapp .sub{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+.miniapp .row{display:grid;grid-template-columns:110px 1fr 52px;gap:8px;align-items:center;font-size:12.5px;margin:6px 0}
+.miniapp .track{height:13px;background:#EAF1F8;border-radius:4px;position:relative}
+.miniapp .fill{position:absolute;inset:0 auto 0 0;background:var(--blue);border-radius:4px}
+.cards3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:14px 0}
+.card{border:1px solid var(--line);border-radius:10px;background:#FBFDFF;padding:16px 18px}
+.card h4{font:700 14.5px "Archivo";color:var(--navy);margin:0 0 6px}
+.card p, .card li{font-size:14px}
+.card ul{margin:6px 0;padding-left:1.1em}
+.note{background:var(--blue-soft);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:12px 16px;margin:16px 0;max-width:76ch}
+
+/* Footer / colección */
+footer.mag{background:var(--deep);color:#C9DCF0;margin-top:44px;padding:38px 20px 46px}
+footer.mag .in{max-width:960px;margin:0 auto}
+footer.mag h3{color:#fff;margin-top:0}
+.coleccion{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:6px 22px;font-size:13.5px;margin:14px 0 20px;padding:0;list-style:none}
+.coleccion li{padding:6px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.coleccion b{color:#7FC8FF;font-variant-numeric:tabular-nums;margin-right:8px}
+.coleccion .this{color:#fff;font-weight:600}
+.cta{background:#0466C8;color:#fff;border-radius:10px;padding:16px 20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;font-size:15px}
+.cta a{color:#fff;font-weight:700}
+footer .fine{font-size:12px;color:#7E97B4;margin-top:18px;max-width:82ch}
+</style>
+
+<header class="hero">
+  <div class="hero-in">
+    <img class="logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OTggMjEzIiB3aWR0aD0iNDk4IiBoZWlnaHQ9IjIxMyI+PGcgZmlsbD0iI0ZGRkZGRiI+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOC4wMCw5Ni44MCkgc2NhbGUoMC4xMjAwLC0wLjEyMDApIiBkPSJNMjkxIC0xMlEyMDcgLTEyIDE1MS4wIDE3LjVROTUgNDcgNjcuMCAxMDguMFEzOSAxNjkgMzkgMjYzUTM5IDM1OCA2Ny4wIDQxOC41UTk1IDQ3OSAxNTEuMCA1MDguNVEyMDcgNTM4IDI5MSA1MzhRMzY3IDUzOCA0MTguNSA1MDkuNVE0NzAgNDgxIDQ5Ni4wIDQyMi4wUTUyMiAzNjMgNTIyIDI2OVYyMzNIMTY0UTE2NiAxODQgMTc5LjAgMTUwLjVRMTkyIDExNyAyMTkuNSAxMDAuNVEyNDcgODQgMjkyIDg0UTMxNSA4NCAzMzUuMCA5MC4wUTM1NSA5NiAzNzAuMCAxMDguNVEzODUgMTIxIDM5My41IDE0MC4wUTQwMiAxNTkgNDAyIDE4NEg1MjJRNTIyIDEzNCA1MDQuNSA5Ny4wUTQ4NyA2MCA0NTUuNSAzNi4wUTQyNCAxMiAzODIuMCAwLjBRMzQwIC0xMiAyOTEgLTEyWk0xNjYgMzE5SDM5NVEzOTUgMzUyIDM4Ny41IDM3NS4wUTM4MCAzOTggMzY2LjUgNDEzLjBRMzUzIDQyOCAzMzQuMCA0MzQuNVEzMTUgNDQxIDI5MSA0NDFRMjUyIDQ0MSAyMjUuNSA0MjguMFExOTkgNDE1IDE4NS4wIDM4OC4wUTE3MSAzNjEgMTY2IDMxOVoiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3NC4zNiw5Ni44MCkgc2NhbGUoMC4xMjAwLC0wLjEyMDApIiBkPSJNNjUgMFY1MjZIMTY3TDE3NyA0NTZIMTg0UTIwMiA0ODAgMjI2LjUgNDk4LjVRMjUxIDUxNyAyODIuNSA1MjcuNVEzMTQgNTM4IDM1MiA1MzhRNDAyIDUzOCA0NDAuNSA1MjAuMFE0NzkgNTAyIDUwMS4wIDQ2Mi4wUTUyMyA0MjIgNTIzIDM1NVYwSDQwMFYzMzNRNDAwIDM2MSAzOTMuNSAzNzkuNVEzODcgMzk4IDM3NC41IDQwOS41UTM2MiA0MjEgMzQ0LjAgNDI2LjBRMzI2IDQzMSAzMDQgNDMxUTI3MSA0MzEgMjQ0LjUgNDE1LjBRMjE4IDM5OSAyMDIuNSAzNzEuMFExODcgMzQzIDE4NyAzMDZWMFoiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNDMuNDgsOTYuODApIHNjYWxlKDAuMTIwMCwtMC4xMjAwKSIgZD0iTTIwNCAtMTJRMTU1IC0xMiAxMjcuMCA3LjVROTkgMjcgODcuNSA1Ny41UTc2IDg4IDc2IDEyMFY0MjZIMTNWNTI2SDc5TDEwMSA2NzNIMTk4VjUyNkgyODlWNDI2SDE5OFYxMzJRMTk4IDExMSAyMDkuMCA5OS41UTIyMCA4OCAyNDIgODhIMjg5VjRRMjc5IDAgMjY0LjUgLTMuNVEyNTAgLTcgMjM0LjAgLTkuNVEyMTggLTEyIDIwNCAtMTJaIi8+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTgwLjIwLDk2LjgwKSBzY2FsZSgwLjEyMDAsLTAuMTIwMCkiIGQ9Ik02NSAwVjUyNkgxNjdMMTc3IDQ0M0gxODRRMTk0IDQ2OCAyMDguNSA0ODkuNVEyMjMgNTExIDI0Ni4wIDUyNC41UTI2OSA1MzggMzAyIDUzOFEzMTggNTM4IDMzMS41IDUzNS4wUTM0NSA1MzIgMzUyIDUyOVY0MTRIMzE1UTI4NCA0MTQgMjYwLjAgNDA1LjVRMjM2IDM5NyAyMTkuNSAzNzkuMFEyMDMgMzYxIDE5NS4wIDMzNC4wUTE4NyAzMDcgMTg3IDI3MVYwWiBNMjY2LjYgNDE0IEwyNjYuNiA1MzggTDkyMC4wIDUzOCBMOTIwLjAgNDE0IFoiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOTYuNjAsOTYuODApIHNjYWxlKDAuMTIwMCwtMC4xMjAwKSIgZD0iTTI5MSAtMTJRMjA3IC0xMiAxNTEuMCAxNy41UTk1IDQ3IDY3LjAgMTA4LjBRMzkgMTY5IDM5IDI2M1EzOSAzNTggNjcuMCA0MTguNVE5NSA0NzkgMTUxLjAgNTA4LjVRMjA3IDUzOCAyOTEgNTM4UTM2NyA1MzggNDE4LjUgNTA5LjVRNDcwIDQ4MSA0OTYuMCA0MjIuMFE1MjIgMzYzIDUyMiAyNjlWMjMzSDE2NFExNjYgMTg0IDE3OS4wIDE1MC41UTE5MiAxMTcgMjE5LjUgMTAwLjVRMjQ3IDg0IDI5MiA4NFEzMTUgODQgMzM1LjAgOTAuMFEzNTUgOTYgMzcwLjAgMTA4LjVRMzg1IDEyMSAzOTMuNSAxNDAuMFE0MDIgMTU5IDQwMiAxODRINTIyUTUyMiAxMzQgNTA0LjUgOTcuMFE0ODcgNjAgNDU1LjUgMzYuMFE0MjQgMTIgMzgyLjAgMC4wUTM0MCAtMTIgMjkxIC0xMlpNMTY2IDMxOUgzOTVRMzk1IDM1MiAzODcuNSAzNzUuMFEzODAgMzk4IDM2Ni41IDQxMy4wUTM1MyA0MjggMzM0LjAgNDM0LjVRMzE1IDQ0MSAyOTEgNDQxUTI1MiA0NDEgMjI1LjUgNDI4LjBRMTk5IDQxNSAxODUuMCAzODguMFExNzEgMzYxIDE2NiAzMTlaIi8+PHJlY3QgeD0iMTg4LjAwIiB5PSI5NS44MCIgd2lkdGg9IjE0LjY0IiBoZWlnaHQ9IjEwNC45MiIvPjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIyMi42OCwyMDAuNzIpIHNjYWxlKDAuMTIwMCwtMC4xMjAwKSIgZD0iTTIwMCAtMTJRMTc4IC0xMiAxNDkuNSAtNi41UTEyMSAtMSA5NC41IDE0LjBRNjggMjkgNTEuMCA1OC41UTM0IDg4IDM0IDEzNlEzNCAxOTAgNTguMCAyMjUuNVE4MiAyNjEgMTI1LjUgMjgxLjVRMTY5IDMwMiAyMjkuNSAzMTAuNVEyOTAgMzE5IDM2MiAzMTlWMzYyUTM2MiAzODUgMzU1LjAgNDAzLjBRMzQ4IDQyMSAzMjkuNSA0MzEuNVEzMTEgNDQyIDI3NCA0NDJRMjM3IDQ0MiAyMTYuMCA0MzMuMFExOTUgNDI0IDE4Ny4wIDQxMS4wUTE3OSAzOTggMTc5IDM4NFYzNzBINjFRNjAgMzc1IDYwLjAgMzgwLjBRNjAgMzg1IDYwIDM5MlE2MCA0MzcgODcuMCA0NzAuMFExMTQgNTAzIDE2Mi4wIDUyMC41UTIxMCA1MzggMjczIDUzOFEzNDUgNTM4IDM5MS41IDUxOC4wUTQzOCA0OTggNDYxLjAgNDYxLjBRNDg0IDQyNCA0ODQgMzcxVjEyM1E0ODQgMTA0IDQ5NS4wIDk2LjBRNTA2IDg4IDUxOSA4OEg1NTFWNFE1NDEgMCA1MjIuMCAtNS41UTUwMyAtMTEgNDc1IC0xMVE0NDkgLTExIDQyOC41IC0yLjVRNDA4IDYgMzk0LjAgMjIuMFEzODAgMzggMzc0IDYwSDM2OFEzNTEgMzkgMzI3LjUgMjIuNVEzMDQgNiAyNzIuNSAtMy4wUTI0MSAtMTIgMjAwIC0xMlpNMjM3IDg4UTI2NyA4OCAyOTAuNSA5Ny4wUTMxNCAxMDYgMzI5LjUgMTIyLjBRMzQ1IDEzOCAzNTMuNSAxNjEuMFEzNjIgMTg0IDM2MiAyMTFWMjM1UTMwNyAyMzUgMjYwLjUgMjI4LjBRMjE0IDIyMSAxODYuNSAyMDIuMFExNTkgMTgzIDE1OSAxNDhRMTU5IDEzMCAxNjcuNSAxMTYuNVExNzYgMTAzIDE5My41IDk1LjVRMjExIDg4IDIzNyA4OFoiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyODguNDQsMjAwLjcyKSBzY2FsZSgwLjEyMDAsLTAuMTIwMCkiIGQ9Ik0yMDQgLTEyUTE1NSAtMTIgMTI3LjAgNy41UTk5IDI3IDg3LjUgNTcuNVE3NiA4OCA3NiAxMjBWNDI2SDEzVjUyNkg3OUwxMDEgNjczSDE5OFY1MjZIMjg5VjQyNkgxOThWMTMyUTE5OCAxMTEgMjA5LjAgOTkuNVEyMjAgODggMjQyIDg4SDI4OVY0UTI3OSAwIDI2NC41IC0zLjVRMjUwIC03IDIzNC4wIC05LjVRMjE4IC0xMiAyMDQgLTEyWiIvPjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMyNS4xNiwyMDAuNzIpIHNjYWxlKDAuMTIwMCwtMC4xMjAwKSIgZD0iTTY1IDBWNTI2SDE4N1YwWiIvPjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM1NC40NCwyMDAuNzIpIHNjYWxlKDAuMTIwMCwtMC4xMjAwKSIgZD0iTTI5OSAtMTJRMjEzIC0xMiAxNTUuMCAxNy41UTk3IDQ3IDY4LjAgMTA4LjBRMzkgMTY5IDM5IDI2M1EzOSAzNTggNjguMCA0MTguNVE5NyA0NzkgMTU1LjAgNTA4LjVRMjEzIDUzOCAyOTkgNTM4UTM4NiA1MzggNDQzLjUgNTA4LjVRNTAxIDQ3OSA1MzAuMCA0MTguNVE1NTkgMzU4IDU1OSAyNjNRNTU5IDE2OSA1MzAuMCAxMDguMFE1MDEgNDcgNDQzLjUgMTcuNVEzODYgLTEyIDI5OSAtMTJaTTI5OSA4OFEzNDcgODggMzc2LjUgMTA2LjVRNDA2IDEyNSA0MTkuNSAxNjIuNVE0MzMgMjAwIDQzMyAyNTZWMjcwUTQzMyAzMjYgNDE5LjUgMzYzLjVRNDA2IDQwMSAzNzYuNSA0MTkuNVEzNDcgNDM4IDI5OSA0MzhRMjUxIDQzOCAyMjEuNSA0MTkuNVExOTIgNDAxIDE3OC41IDM2My41UTE2NSAzMjYgMTY1IDI3MFYyNTZRMTY1IDIwMCAxNzguNSAxNjIuNVExOTIgMTI1IDIyMS41IDEwNi41UTI1MSA4OCAyOTkgODhaIi8+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDI1LjI0LDIwMC43Mikgc2NhbGUoMC4xMjAwLC0wLjEyMDApIiBkPSJNMjcwIC0xMlEyMTMgLTEyIDE3MC4wIDAuNVExMjcgMTMgOTguMCAzNS4wUTY5IDU3IDU0LjUgODYuNVE0MCAxMTYgNDAgMTUxUTQwIDE1NiA0MC41IDE2MC4wUTQxIDE2NCA0MSAxNjZIMTYxUTE2MSAxNjQgMTYxLjAgMTYyLjBRMTYxIDE2MCAxNjEgMTU4UTE2MiAxMzEgMTc4LjAgMTE0LjVRMTk0IDk4IDIyMC4wIDkxLjBRMjQ2IDg0IDI3NSA4NFEzMDEgODQgMzI0LjUgODkuNVEzNDggOTUgMzYzLjUgMTA3LjVRMzc5IDEyMCAzNzkgMTQwUTM3OSAxNjYgMzU5LjAgMTgwLjBRMzM5IDE5NCAzMDYuNSAyMDMuMFEyNzQgMjEyIDIzNyAyMjJRMjA0IDIzMSAxNzEuMCAyNDIuMFExMzggMjUzIDExMS41IDI3MC4wUTg1IDI4NyA2OC41IDMxNC4wUTUyIDM0MSA1MiAzODFRNTIgNDIwIDY5LjAgNDQ5LjBRODYgNDc4IDExNi4wIDQ5Ny41UTE0NiA1MTcgMTg3LjAgNTI3LjBRMjI4IDUzNyAyNzYgNTM3UTMyMyA1MzcgMzYxLjUgNTI3LjBRNDAwIDUxNyA0MjguNSA0OTguNVE0NTcgNDgwIDQ3Mi41IDQ1My41UTQ4OCA0MjcgNDg4IDM5NVE0ODggMzg4IDQ4Ny41IDM4MS4wUTQ4NyAzNzQgNDg3IDM3M0gzNjhWMzgwUTM2OCAzOTkgMzU2LjUgNDEyLjVRMzQ1IDQyNiAzMjMuNSA0MzQuMFEzMDIgNDQyIDI3MCA0NDJRMjQ2IDQ0MiAyMjguMCA0MzguMFEyMTAgNDM0IDE5OC41IDQyNy4wUTE4NyA0MjAgMTgxLjAgNDExLjBRMTc1IDQwMiAxNzUgMzkxUTE3NSAzNzIgMTkwLjAgMzYxLjBRMjA1IDM1MCAyMzAuNSAzNDIuMFEyNTYgMzM0IDI4NiAzMjVRMzIyIDMxNSAzNjAuMCAzMDQuNVEzOTggMjk0IDQzMC41IDI3OC4wUTQ2MyAyNjIgNDgzLjAgMjMzLjBRNTAzIDIwNCA1MDMgMTU2UTUwMyAxMTAgNDg1LjUgNzcuNVE0NjggNDUgNDM2LjUgMjUuNVE0MDUgNiAzNjIuNSAtMy4wUTMyMCAtMTIgMjcwIC0xMloiLz48L2c+PHBhdGggZmlsbD0iIzNEOERFMCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzI1LjE2LDIwMC43Mikgc2NhbGUoMC4xMjAwLC0wLjEyMDApIiBkPSJNNjUgNjA3VjcyM0gxODdWNjA3WiIvPjwvc3ZnPg==" alt="entreratios">
+    <div class="num"><small>Boletín técnico</small>N° 8</div>
+    <div class="strap">
+      <span>DMG Ingeniería &amp; Proyectos · Lima, Perú</span>
+      <span>Agosto 2026</span>
+      <span>Edición: Gestión del diseño · Costos en edificaciones · IA en AEC</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc"><div class="in">
+  <a href="#t1">① 10 tips de predimensionamiento</a>
+  <a href="#t2">② Indicadores del presupuesto de estructuras</a>
+  <a href="#t3">③ Vibe coding en construcción</a>
+  <a href="#coleccion">La colección</a>
+</div></nav>
+
+<div class="wrap">
+
+<!-- ============ ARTÍCULO 1 ============ -->
+<span class="seg" id="t1">Segmento 1 · Gestión del diseño</span>
+<article>
+<h2>10 tips de diseño durante el predimensionamiento</h2>
+<p class="lead">Las decisiones tomadas en el anteproyecto controlan entre el 35% y 40% del costo final de la obra. Estos diez tips concentran lo que hemos aprendido coordinando +29 proyectos de ingenierías: pequeñas decisiones tempranas que valen cientos de miles de soles. El <strong>Tip 1 es interactivo</strong>: mueve tú mismo la montante y mira cómo cambia el costo.</p>
+
+<div class="tips-nav" id="tipsNav"></div>
+
+<div class="tip-panel" id="tipPanel"></div>
+
+<!-- DEMO -->
+<div class="demo" id="demoBlock">
+  <div class="bar">
+    <span>DEMO · Planta típica — 5 departamentos · Arrastra la montante eléctrica ⟷ sobre el pasillo común</span>
+    <span class="ref">Valores referenciales de prototipo</span>
+  </div>
+  <div class="demo-body">
+    <div class="plan-wrap">
+      <svg class="plan" id="planSVG" viewBox="0 0 900 470" aria-label="Planta interactiva: arrastre la montante eléctrica">
+        <rect x="0" y="0" width="900" height="470" fill="#FFFFFF"/>
+        <!-- deptos -->
+        <g stroke="#023E7D" stroke-width="2.5" fill="#F2F7FC">
+          <rect x="14" y="14" width="280" height="180"/>
+          <rect x="294" y="14" width="300" height="180"/>
+          <rect x="594" y="14" width="292" height="180"/>
+          <rect x="14" y="276" width="430" height="180"/>
+          <rect x="444" y="276" width="442" height="180"/>
+        </g>
+        <!-- pasillo -->
+        <rect x="14" y="194" width="872" height="82" fill="#E9F1F9" stroke="#023E7D" stroke-width="2.5"/>
+        <g font-family="Archivo,sans-serif" font-size="15" font-weight="700" fill="#57697F">
+          <text x="30" y="42">DEPTO 101 · 2D</text>
+          <text x="310" y="42">DEPTO 102 · 3D</text>
+          <text x="610" y="42">DEPTO 103 · 2D</text>
+          <text x="30" y="304">DEPTO 104 · 3D</text>
+          <text x="460" y="304">DEPTO 105 · 3D</text>
+          <text x="700" y="252" font-size="13" fill="#8AA1B9">ÁREA COMÚN / PASILLO</text>
+        </g>
+        <!-- banco de medidores -->
+        <g>
+          <rect x="20" y="204" width="46" height="62" fill="#023E7D"/>
+          <text x="43" y="240" font-family="Archivo" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">BANCO</text>
+          <text x="43" y="252" font-family="Archivo" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">MED.</text>
+        </g>
+        <!-- tableros -->
+        <g id="tabs" font-family="Archivo,sans-serif" font-size="11" font-weight="700"></g>
+        <!-- cables -->
+        <g id="cables" stroke="#0466C8" stroke-width="2.5" fill="none" opacity="0.85"></g>
+        <!-- cota -->
+        <g id="cota" font-family="IBM Plex Mono,monospace" font-size="14"></g>
+        <!-- montante -->
+        <g id="mont" cursor="grab">
+          <rect id="montRect" x="-24" y="200" width="48" height="70" rx="5" fill="#0466C8" stroke="#023E7D" stroke-width="2.5"/>
+          <text x="0" y="228" text-anchor="middle" font-family="Archivo" font-size="10.5" font-weight="800" fill="#fff">MONTANTE</text>
+          <text x="0" y="242" text-anchor="middle" font-family="Archivo" font-size="10.5" font-weight="800" fill="#fff">IIEE ⟷</text>
+          <path d="M-38 235 l10 -7 v14 z M38 235 l-10 -7 v14 z" fill="#023E7D"/>
+        </g>
+      </svg>
+    </div>
+    <div class="costbox">
+      <div class="kicker">Costo de alimentadores · en vivo</div>
+      <table>
+        <tr><td>Distancia al banco de medidores</td><td id="cDist">— m</td></tr>
+        <tr><td>ML horizontales (10 pisos × 5 dptos.)</td><td id="cMlh">—</td></tr>
+        <tr><td>ML verticales (fijos)</td><td id="cMlv">750</td></tr>
+        <tr><td>P.U. ponderado <span class="ref">ref.</span></td><td>S/ 60.00 / ml</td></tr>
+        <tr><td><strong>Costo parcial alimentadores</strong></td><td id="cTotal">—</td></tr>
+      </table>
+      <div class="big-delta d-ok" id="deltaBox"><small>vs. posición óptima</small>—</div>
+      <div class="demo-btns">
+        <button id="btnOpt">Ver posición óptima</button>
+        <button id="btnRst">Reiniciar</button>
+      </div>
+      <div class="hint">Arrastra la montante con el mouse o el dedo. La cota y los costos se recalculan en tiempo real. Los precios unitarios son referenciales del prototipo; se reemplazarán por los indicadores DMG.</div>
+    </div>
+  </div>
+</div>
+</article>
+
+<!-- ============ ARTÍCULO 2 ============ -->
+<span class="seg" id="t2">Segmento 3 · Costos en edificaciones</span>
+<article>
+<h2>Indicadores de control del presupuesto de estructuras</h2>
+<p class="lead">Elaborar un presupuesto detallado de estructuras es la mitad del trabajo. La otra mitad —la que separa un presupuesto confiable de un dolor de cabeza en obra— es someterlo a un control estricto de indicadores, revisándolos <strong>de lo macro a lo micro</strong>: primero los ratios globales por m², luego por grupos de partida, y finalmente los ratios por elemento estructural y los precios de los recursos más incidentes.</p>
+<p>Manejar <strong>rangos esperados</strong> para cada indicador es lo que permite detectar a tiempo una omisión o un error importante. Y contrastar los precios unitarios contra el mercado vigente evita la historia repetida: presupuestos que nacen con precios desactualizados y estallan durante la ejecución. <span class="ref">Todos los valores de esta edición son referenciales del prototipo</span></p>
+
+<div class="cuadros">
+  <div class="cuadro">
+    <h4>Cuadro 1 · Costo por m² techado — estructuras</h4>
+    <div class="sub">Macroindicador de arranque: compara contra proyectos similares</div>
+    <div class="hbar"><span>Sótano</span><div class="track"><div class="fill" style="width:96%;background:#023E7D"></div></div><span class="val">S/ 620/m²</span></div>
+    <div class="hbar"><span>Torre</span><div class="track"><div class="fill" style="width:57%;background:#0466C8"></div></div><span class="val">S/ 368/m²</span></div>
+    <div class="hbar"><span>Promedio proyecto</span><div class="track"><div class="fill" style="width:66%;background:#7FA8D9"></div></div><span class="val">S/ 428/m²</span></div>
+  </div>
+
+  <div class="cuadro">
+    <h4>Cuadro 3 · Indicadores globales de diseño</h4>
+    <div class="sub">Rangos de referencia para vivienda multifamiliar en Lima</div>
+    <table class="data">
+      <tr><th>Indicador</th><th>Proyecto</th><th>Rango esperado</th></tr>
+      <tr><td>Acero (kg/m²)</td><td>28.4</td><td>24 – 32</td></tr>
+      <tr><td>Concreto (m³/m²)</td><td>0.29</td><td>0.26 – 0.33</td></tr>
+      <tr><td>Encofrado (m²/m²)</td><td>2.18</td><td>1.9 – 2.4</td></tr>
+      <tr><td>Cuantía global (kg/m³)</td><td>98</td><td>85 – 110</td></tr>
+    </table>
+  </div>
+
+  <div class="cuadro wide">
+    <h4>Cuadro 2 · Costo por m² según grupo de partidas</h4>
+    <div class="sub">El desglose revela dónde se concentra la diferencia sótano vs. torre</div>
+    <div class="legend"><span><i style="background:#023E7D"></i>Sótano</span><span><i style="background:#0466C8"></i>Torre</span></div>
+    <div id="cuadro2"></div>
+  </div>
+
+  <div class="cuadro">
+    <h4>Cuadro 4 · Precios unitarios ponderados globales</h4>
+    <div class="sub">Chequeo de confianza del presupuesto completo</div>
+    <table class="data">
+      <tr><th>Recurso</th><th>P.U. ponderado</th></tr>
+      <tr><td>Concreto (todas las resistencias)</td><td>S/ 462 / m³</td></tr>
+      <tr><td>Acero habilitado y colocado</td><td>S/ 6.10 / kg</td></tr>
+      <tr><td>Encofrado (todos los tipos)</td><td>S/ 68 / m²</td></tr>
+      <tr><td>Movimiento de tierras</td><td>S/ 74 / m³</td></tr>
+    </table>
+  </div>
+
+  <div class="cuadro">
+    <h4>Cuadro 5 · Ratio de acero por elemento (kg/m³)</h4>
+    <div class="sub">Microindicador: localiza el error a nivel de elemento</div>
+    <div class="hbar"><span>Zapatas / plateas</span><div class="track"><div class="fill" style="width:26%;background:#0466C8"></div></div><span class="val">52</span></div>
+    <div class="hbar"><span>Muros anclados</span><div class="track"><div class="fill" style="width:44%;background:#0466C8"></div></div><span class="val">88</span></div>
+    <div class="hbar"><span>Placas / muros</span><div class="track"><div class="fill" style="width:55%;background:#0466C8"></div></div><span class="val">110</span></div>
+    <div class="hbar"><span>Columnas</span><div class="track"><div class="fill" style="width:80%;background:#0466C8"></div></div><span class="val">160</span></div>
+    <div class="hbar"><span>Vigas</span><div class="track"><div class="fill" style="width:70%;background:#0466C8"></div></div><span class="val">140</span></div>
+    <div class="hbar"><span>Losas</span><div class="track"><div class="fill" style="width:42%;background:#0466C8"></div></div><span class="val">84</span></div>
+  </div>
+
+  <div class="cuadro wide">
+    <h4>Cuadro 6 · Losas: kg/m² vs. costo total por m²</h4>
+    <div class="sub">Incluye concreto + acero + encofrado + prefabricado. La brecha entre sistemas es la oportunidad de optimización según luces y repetición del proyecto</div>
+    <svg viewBox="0 0 760 300" style="width:100%;height:auto" id="scatter">
+      <g stroke="#E4ECF4" stroke-width="1">
+        <line x1="70" y1="40" x2="70" y2="250"/><line x1="70" y1="250" x2="720" y2="250"/>
+        <line x1="70" y1="180" x2="720" y2="180" stroke-dasharray="3 4"/>
+        <line x1="70" y1="110" x2="720" y2="110" stroke-dasharray="3 4"/>
+        <line x1="70" y1="40" x2="720" y2="40" stroke-dasharray="3 4"/>
+      </g>
+      <g font-family="IBM Plex Sans" font-size="11.5" fill="#57697F">
+        <text x="62" y="254" text-anchor="end">140</text>
+        <text x="62" y="184" text-anchor="end">180</text>
+        <text x="62" y="114" text-anchor="end">220</text>
+        <text x="62" y="44" text-anchor="end">260</text>
+        <text x="30" y="150" transform="rotate(-90 30 150)" text-anchor="middle" font-weight="600">S/ / m² de losa</text>
+        <text x="180" y="272">6</text><text x="360" y="272">8</text><text x="540" y="272">10</text><text x="700" y="272">12</text>
+        <text x="395" y="292" text-anchor="middle" font-weight="600">Acero en losa (kg/m²)</text>
+      </g>
+      <g font-family="Archivo" font-size="12.5" font-weight="700">
+        <circle cx="250" cy="120" r="9" fill="#0466C8"/><text x="266" y="116" fill="#13233A">Aligerada convencional · S/ 216</text>
+        <circle cx="330" cy="165" r="9" fill="#0E9594"/><text x="346" y="161" fill="#13233A">Viguetas prefabricadas · S/ 190</text>
+        <circle cx="480" cy="196" r="9" fill="#B97F1D"/><text x="496" y="192" fill="#13233A">Prelosas · S/ 172</text>
+        <circle cx="620" cy="85" r="9" fill="#7C5CD6"/><text x="500" y="66" fill="#13233A">Maciza in situ · S/ 236</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="cuadro wide">
+    <h4>Cuadro 7 · Recursos más incidentes — precios vs. mercado</h4>
+    <div class="sub">Este tablero debe vivir actualizado: un presupuesto con precios viejos es un problema garantizado en obra</div>
+    <table class="data">
+      <tr><th>Recurso</th><th>P.U. presupuesto</th><th>Mercado (ago-26)</th><th>Desviación</th></tr>
+      <tr><td>Acero corrugado fy=4200 (kg)</td><td>S/ 4.05</td><td>S/ 4.12</td><td style="color:#B4232A">−1.7%</td></tr>
+      <tr><td>Concreto premezclado f'c=210 (m³)</td><td>S/ 318</td><td>S/ 312</td><td style="color:#1D7A46">+1.9%</td></tr>
+      <tr><td>Alquiler encofrado metálico (m²/mes)</td><td>S/ 26.5</td><td>S/ 27.0</td><td style="color:#B4232A">−1.9%</td></tr>
+      <tr><td>Mano de obra operario (hh)</td><td>S/ 28.9</td><td>S/ 28.9</td><td>0.0%</td></tr>
+      <tr><td>Vigueta prefabricada (ml)</td><td>S/ 21.8</td><td>S/ 22.4</td><td style="color:#B4232A">−2.7%</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="note"><strong>Cómo usar estos cuadros:</strong> revisa siempre en cascada — si el Cuadro 1 sale del rango, el Cuadro 2 te dice en qué grupo de partidas está el problema, y los Cuadros 5 y 7 lo localizan a nivel de elemento o de recurso. En DMG este control es un paso obligatorio antes de entregar cualquier presupuesto.</div>
+</article>
+
+<!-- ============ ARTÍCULO 3 ============ -->
+<span class="seg" id="t3">Segmento 4 · Implementación de IA en AEC</span>
+<article>
+<h2>Adopción del vibe coding en construcción</h2>
+<p class="lead">"Vibe coding" es programar describiendo lo que necesitas en lenguaje natural y dejando que un agente de IA escriba, ejecute y corrija el código. Para una empresa constructora significa algo concreto: <strong>las herramientas internas que antes requerían contratar un desarrollador, hoy las prototipa un ingeniero de obra en una tarde.</strong> Así se ve en la práctica:</p>
+
+<div class="term">
+  <div class="tbar">
+    <span class="dot" style="background:#F45B5B"></span><span class="dot" style="background:#F0B429"></span><span class="dot" style="background:#3BC46A"></span>
+    <span class="title">claude — sesión de vibe coding · DMG</span>
+  </div>
+  <div class="body" id="termBody"></div>
+</div>
+<button class="replay" id="btnTerm">▶ Reproducir demo</button>
+
+<div class="miniapp" id="miniApp">
+  <h4>📱 Control de Desperdicios — prototipo</h4>
+  <div class="sub">Generado por el agente en la sesión de arriba · datos de ejemplo</div>
+  <div class="row"><span>Concreto</span><div class="track"><div class="fill" style="width:62%"></div></div><span>3.1%</span></div>
+  <div class="row"><span>Acero</span><div class="track"><div class="fill" style="width:84%"></div></div><span>4.2%</span></div>
+  <div class="row"><span>Ladrillo</span><div class="track"><div class="fill" style="width:48%"></div></div><span>2.4%</span></div>
+  <div class="row"><span>Encofrado</span><div class="track"><div class="fill" style="width:30%"></div></div><span>1.5%</span></div>
+  <div class="sub" style="margin-top:8px">Registro por cuadrilla · alerta si el desperdicio supera el rango meta de la partida</div>
+</div>
+
+<h3>Cómo comunicarte con la IA: las 5 reglas que funcionan</h3>
+<div class="cards3">
+  <div class="card"><h4>1 · Da contexto, no órdenes sueltas</h4><p>"Somos una constructora, controlamos desperdicios por partida y por cuadrilla, el rango meta del concreto es 2–3%" produce una herramienta útil. "Hazme una app de desperdicios" produce algo genérico.</p></div>
+  <div class="card"><h4>2 · Define el criterio de aceptación</h4><p>Dile cómo se ve el resultado correcto: "debe alertar cuando el desperdicio supere el rango meta y exportar a Excel". La IA construye contra ese criterio, igual que un contratista contra una especificación.</p></div>
+  <div class="card"><h4>3 · Itera en ciclos cortos</h4><p>Pide el prototipo mínimo, pruébalo con datos reales de tu obra, y corrige: "la alerta debe llegar al WhatsApp del residente". Diez iteraciones de 5 minutos superan a una especificación perfecta.</p></div>
+  <div class="card"><h4>4 · Pide que te explique</h4><p>"Explícame qué hace este cálculo antes de usarlo" — la IA documenta su propio trabajo. Nunca pongas en producción una herramienta cuyo funcionamiento tu equipo no entiende.</p></div>
+  <div class="card"><h4>5 · Usa skills para estandarizar</h4><p>Un <em>skill</em> es un manual de procedimientos que la IA sigue siempre igual: "así se estructura un metrado DMG, con estas partidas y este formato". Escríbelo una vez y toda herramienta que la IA genere respetará tu estándar.</p></div>
+  <div class="card"><h4>6 · Decide motor y autonomía</h4><p><strong>El motor importa:</strong> los modelos más capaces (como la familia Claude) razonan mejor sobre planos, normas y cálculos. <strong>La autonomía se gradúa:</strong> asistido (la IA propone, tú apruebas cada paso) → supervisado (ejecuta y reporta) → autónomo (tareas repetitivas ya validadas). En construcción, arranca siempre en asistido.</p></div>
+</div>
+
+<div class="note"><strong>Lo que esto habilita:</strong> la IA no solo escribe el código — configura la base de datos, conecta el formulario con tu Drive o tu ERP, programa el reporte semanal automático y te acompaña a desplegarlo. Cualquier componente que un proyecto necesite se describe en lenguaje natural y se materializa en horas. En DMG ya operamos así: nuestro CRM comercial y los reportes de obra nacieron con este método.</div>
+</article>
+
+<!-- ============ COLECCIÓN ============ -->
+</div>
+<footer class="mag" id="coleccion">
+  <div class="in">
+    <h3>La colección ENTRERATIOS</h3>
+    <ul class="coleccion">
+      <li><b>01</b>Optimización del sistema contraincendio</li>
+      <li><b>02</b>Diseño de losas estructurales</li>
+      <li><b>03</b>10 tips para el control del diseño</li>
+      <li><b>04</b>Bono Verde sin sobrecostos</li>
+      <li><b>05</b>Manejo de RFIs y control de cambios</li>
+      <li><b>06</b>Ratios de edificaciones según características</li>
+      <li><b>07</b>Presupuesto detallado: edificio de 8 pisos</li>
+      <li class="this"><b>08</b>Predimensionamiento · Indicadores de estructuras · Vibe coding — estás aquí</li>
+      <li><b>09</b>Materiales: anclajes y prefabricados</li>
+      <li><b>10</b>IA en AEC: metrados y CAD con Claude</li>
+    </ul>
+    <div class="cta">
+      <span>¿Te interesa otro número de la colección? Escríbenos y te lo enviamos.</span>
+      <a href="mailto:gerencia@dmeta.com.pe?subject=Quiero%20un%20n%C3%BAmero%20de%20ENTRERATIOS">gerencia@dmeta.com.pe →</a>
+    </div>
+    <p class="fine">ENTRERATIOS es una publicación técnica de DMG Ingeniería &amp; Proyectos. Los ratios e indicadores de esta edición son valores referenciales del prototipo, elaborados con datos agregados y anonimizados de nuestra experiencia (+70 presupuestos, +958 mil m²); ningún dato es atribuible a un cliente o proyecto identificable. Su aplicación a un proyecto específico requiere evaluación profesional — conversemos.</p>
+  </div>
+</footer>
+
+<script>
+/* ================= TIPS ================= */
+const TIPS = [
+ {t:"Ubica la montante eléctrica en el centro de gravedad de los tableros", imp:"Hasta S/ 15–30 mil por montante mal ubicada", body:"La montante debe minimizar la suma de recorridos de los alimentadores hacia los tableros de cada departamento y hacia el banco de medidores. Cada metro que la alejas del punto óptimo se multiplica por el número de departamentos y de pisos. Pruébalo en el demo interactivo de abajo: mueve la montante y mira los soles correr.", demo:true},
+ {t:"Predimensiona la estructura antes de congelar la arquitectura", imp:"Controla 35–40% del costo de obra", body:"El predimensionamiento estructural temprano (placas, columnas, espesores de losa) define la trama del proyecto. Cuando la arquitectura se congela sin ese filtro, las correcciones posteriores llegan como adicionales: vigas peraltadas donde no caben, placas que se comen estacionamientos, cimentaciones sobredimensionadas."},
+ {t:"Decide cisterna y cuarto de bombas con el anteproyecto, no después", imp:"Evita sobrecostos en muros de contención y bombeo", body:"La ubicación de la cisterna define excavación localizada, muros de contención adicionales y la longitud de las líneas de impulsión. Ubicarla junto al ingreso de servicios y cerca del cuarto de bombas reduce metros de tubería presurizada y potencia de bombeo."},
+ {t:"Apila los baños y cocinas: montantes sanitarias verticales y rectas", imp:"Menos falsas vigas, menos ruido, menos metros de tubería", body:"Cada quiebre horizontal de una montante sanitaria genera falsas vigas o falsos cielos, registros adicionales y riesgo de atoros. Baños y cocinas alineados verticalmente entre pisos permiten montantes rectas y ductos compartidos — el metrado de IISS baja solo."},
+ {t:"La trama del sótano manda: modula los estacionamientos primero", imp:"Cada placa mal puesta puede costar un estacionamiento (S/ 40–60 mil de venta)", body:"Verifica la modulación de estacionamientos y radios de giro ANTES de fijar la posición de placas y columnas de la torre. Una placa desplazada 40 cm puede eliminar un estacionamiento vendible — y el costo de transferir cargas con vigas de gran peralte supera casi siempre el de replantear la trama a tiempo."},
+ {t:"Elige el sistema de losa por luces y repetición, no por costumbre", imp:"Diferencias de S/ 20–60 por m² de losa", body:"Aligerada convencional, viguetas prefabricadas, prelosas o maciza: cada sistema tiene su rango de luz y su punto de equilibrio según la repetición de plantas y la logística de obra. El Cuadro 6 del segmento de costos muestra la brecha — elegir por inercia deja plata en la mesa."},
+ {t:"Agrupa los shafts en un núcleo húmedo-técnico", imp:"Recupera área vendible y simplifica el recorrido de instalaciones", body:"Ductos de basura, ventilaciones, montantes sanitarias, eléctricas y de comunicaciones dispersos por la planta perforan losas y vigas por todos lados. Agrupados en un núcleo junto a la circulación vertical, liberan planta útil y concentran el mantenimiento."},
+ {t:"Cuida la altura de entrepiso: cada 5 cm de más se paga en toda la torre", imp:"~1.5–2% del casco por cada 5 cm innecesarios", body:"Altura de entrepiso = muros, tarrajeos, placas, columnas y fachada multiplicados por todos los pisos. Defínela desde el anteproyecto coordinando peraltes de vigas, recorridos de ductos y falsos cielos — no como resultado de sumar holguras de cada especialidad."},
+ {t:"Circulaciones mínimas: ascensores y escalera al centro de gravedad de la planta", imp:"Cada m² de pasillo es un m² que no se vende", body:"La posición del núcleo de circulación define los metros de pasillo común por piso. Un núcleo descentrado agrega pasillos que se repiten en todos los niveles — área techada que cuesta construir y no genera ingreso. Optimizar el núcleo es la optimización más rentable de la planta."},
+ {t:"Uniformiza niveles del techo de sótano", imp:"Encofrado más simple, menos errores en obra", body:"Desniveles locales en el techo del sótano (por jardineras, rampas o cisternas mal coordinadas) complican el encofrado, cortan la modulación y generan detalles únicos que la obra resuelve improvisando. Un solo nivel dominante con transiciones planificadas se construye más rápido y con menos adicionales."}
+];
+const nav = document.getElementById('tipsNav');
+const panel = document.getElementById('tipPanel');
+let cur = 0;
+function renderNav(){
+  nav.innerHTML = TIPS.map((t,i)=>`<button class="${i===cur?'on':''}" data-i="${i}" aria-label="Tip ${i+1}">${i+1}</button>`).join('');
+}
+function renderTip(){
+  const t = TIPS[cur];
+  panel.innerHTML = `
+    <div class="kicker">Tip ${cur+1} de 10 ${t.demo?'· INTERACTIVO ⇩':''}</div>
+    <h3>${t.t}</h3>
+    <div class="tip-meta"><span class="chip warn">Impacto: ${t.imp}</span></div>
+    <p>${t.body}</p>
+    <div class="stepper">
+      <button id="prevT" ${cur===0?'disabled':''}>← Tip anterior</button>
+      <button id="nextT" ${cur===9?'disabled':''}>Siguiente tip →</button>
+    </div>`;
+  document.getElementById('prevT').onclick = ()=>{cur=Math.max(0,cur-1);renderNav();renderTip();};
+  document.getElementById('nextT').onclick = ()=>{cur=Math.min(9,cur+1);renderNav();renderTip();};
+  document.getElementById('demoBlock').style.display = t.demo? '' : 'none';
+  renderNav();
+}
+nav.addEventListener('click', e=>{ if(e.target.dataset.i!==undefined){cur=+e.target.dataset.i;renderTip();} });
+renderTip();
+
+/* ================= DEMO MONTANTE ================= */
+/* Escala: 30 px = 1 m. Parámetros REFERENCIALES del prototipo. */
+const PX_M = 30;
+const FLOORS = 10, PU = 60.0, MLV = 750;
+const MED_X = 66;                       // banco de medidores
+const TABS = [                          // tableros: x en px, lado (arriba/abajo)
+  {x:150, up:true, n:'TD-101'}, {x:440, up:true, n:'TD-102'}, {x:760, up:true, n:'TD-103'},
+  {x:250, up:false, n:'TD-104'}, {x:640, up:false, n:'TD-105'}
+];
+const svgEl = document.getElementById('planSVG');
+const montG = document.getElementById('mont');
+const XMIN = 110, XMAX = 850;
+let mx = 700;                           // posición inicial deliberadamente mala
+
+// dibujar tableros
+document.getElementById('tabs').innerHTML = TABS.map(t=>{
+  const y = t.up ? 176 : 276;
+  return `<rect x="${t.x-24}" y="${t.up?162:276}" width="48" height="18" fill="#023E7D"/>
+          <text x="${t.x}" y="${t.up?150:312}" text-anchor="middle" fill="#023E7D">${t.n}</text>`;
+}).join('');
+
+function fmt(n){return 'S/ ' + n.toLocaleString('es-PE',{maximumFractionDigits:0});}
+function mlHoriz(x){
+  let ml = 0;
+  TABS.forEach(t=> ml += Math.abs(t.x - x)/PX_M * FLOORS);
+  ml += Math.abs(MED_X - x)/PX_M * TABS.length * FLOORS / 2; // acometida agrupada por bandeja (ref.)
+  return ml;
+}
+// posición óptima por búsqueda
+let optX = XMIN, optML = Infinity;
+for(let x=XMIN; x<=XMAX; x++){ const m = mlHoriz(x); if(m<optML){optML=m; optX=x;} }
+const optCost = (optML+MLV)*PU;
+
+function update(){
+  montG.setAttribute('transform',`translate(${mx},0)`);
+  // cables (planta típica)
+  document.getElementById('cables').innerHTML = TABS.map(t=>{
+    const y = t.up? 185 : 276;
+    return `<path d="M${mx} 235 L${t.x} 235 L${t.x} ${y}"/>`;
+  }).join('') + `<path d="M${MED_X} 250 L${mx} 250" stroke-dasharray="6 4"/>`;
+  // cota
+  const distM = Math.abs(mx - MED_X)/PX_M;
+  document.getElementById('cota').innerHTML = `
+    <line x1="${MED_X}" y1="425" x2="${mx}" y2="425" stroke="#B4232A" stroke-width="1.5"/>
+    <line x1="${MED_X}" y1="418" x2="${MED_X}" y2="432" stroke="#B4232A" stroke-width="1.5"/>
+    <line x1="${mx}" y1="418" x2="${mx}" y2="432" stroke="#B4232A" stroke-width="1.5"/>
+    <text x="${(MED_X+mx)/2}" y="448" text-anchor="middle" fill="#B4232A" font-weight="600">${distM.toFixed(1)} m</text>`;
+  // costos
+  const mlh = mlHoriz(mx), total = (mlh+MLV)*PU, delta = total-optCost;
+  document.getElementById('cDist').textContent = distM.toFixed(1)+' m';
+  document.getElementById('cMlh').textContent = Math.round(mlh).toLocaleString('es-PE')+' ml';
+  document.getElementById('cTotal').textContent = fmt(total);
+  const box = document.getElementById('deltaBox');
+  if(delta < 300){ box.className='big-delta d-ok'; box.innerHTML = `<small>posición óptima ✓</small>${fmt(delta)} de sobrecosto`; }
+  else { box.className='big-delta d-up'; box.innerHTML = `<small>sobrecosto vs. posición óptima</small>▲ ${fmt(delta)}`; }
+}
+function clientX(e){ return (e.touches? e.touches[0] : e).clientX; }
+let drag = false;
+montG.addEventListener('pointerdown', e=>{drag=true; montG.setPointerCapture(e.pointerId); montG.style.cursor='grabbing';});
+window.addEventListener('pointerup', ()=>{drag=false; montG.style.cursor='grab';});
+window.addEventListener('pointermove', e=>{
+  if(!drag) return;
+  const pt = svgEl.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
+  const loc = pt.matrixTransform(svgEl.getScreenCTM().inverse());
+  mx = Math.max(XMIN, Math.min(XMAX, loc.x));
+  update();
+});
+document.getElementById('btnOpt').onclick = ()=>{ animateTo(optX); };
+document.getElementById('btnRst').onclick = ()=>{ animateTo(700); };
+function animateTo(target){
+  const from = mx, steps = 30; let i=0;
+  const iv = setInterval(()=>{ i++; mx = from + (target-from)*(i/steps); update(); if(i>=steps) clearInterval(iv); }, 16);
+}
+update();
+
+/* ================= CUADRO 2 (barras agrupadas) ================= */
+const C2 = [
+  {g:'Mov. de tierras y estabilización', s:210, t:0},
+  {g:'Cimentación', s:96, t:38},
+  {g:'Verticales (placas y columnas)', s:118, t:132},
+  {g:'Horizontales (vigas y losas)', s:142, t:164},
+  {g:'Varios (juntas, curado, otros)', s:54, t:34},
+];
+const maxC2 = 220;
+document.getElementById('cuadro2').innerHTML = C2.map(r=>`
+  <div class="hbar" title="${r.g}: sótano S/ ${r.s}/m² · torre S/ ${r.t}/m²">
+    <span>${r.g}</span>
+    <div>
+      <div class="track" style="margin-bottom:3px"><div class="fill" style="width:${r.s/maxC2*100}%;background:#023E7D"></div></div>
+      <div class="track"><div class="fill" style="width:${r.t/maxC2*100}%;background:#0466C8"></div></div>
+    </div>
+    <span class="val">${r.s} · ${r.t}</span>
+  </div>`).join('');
+
+/* ================= TERMINAL ================= */
+const LINES = [
+  ['u','$ claude'],
+  ['dim','Claude Code v3 · sesión iniciada · skill activo: metrados-dmg'],
+  ['u','> Elabora un prototipo de aplicación para control de desperdicios de obra.\n  Registramos por partida y por cuadrilla; el rango meta del concreto es 2–3%,\n  acero 3–5%. Debe alertar cuando se supere el rango y exportar a Excel.'],
+  ['c','Entendido. Voy a crear el prototipo con:'],
+  ['c','  1. Formulario de registro: partida · cuadrilla · cantidad perdida · causa'],
+  ['c','  2. Dashboard de % de desperdicio vs. rango meta por partida'],
+  ['c','  3. Alerta cuando una partida supere su rango'],
+  ['c','  4. Exportación a Excel (.xlsx)'],
+  ['dim','● Creando control-desperdicios/app.jsx …'],
+  ['dim','● Configurando base de datos local …'],
+  ['dim','● Generando dashboard con los rangos meta …'],
+  ['c','✔ Prototipo listo. Ábrelo abajo — pruébalo con datos reales de tu obra y\n  dime qué ajustamos. Sugerencia: ¿conecto la alerta al WhatsApp del residente?'],
+];
+const termBody = document.getElementById('termBody');
+let playing = false;
+function playTerm(){
+  if(playing) return; playing = true;
+  termBody.innerHTML = ''; document.getElementById('miniApp').classList.remove('show');
+  let i = 0;
+  function next(){
+    if(i >= LINES.length){
+      document.getElementById('miniApp').classList.add('show');
+      playing = false; return;
+    }
+    const [cls, txt] = LINES[i++];
+    const div = document.createElement('div'); div.className = cls;
+    termBody.appendChild(div);
+    let j = 0;
+    const iv = setInterval(()=>{
+      j += 3; div.textContent = txt.slice(0, j);
+      if(j >= txt.length){ clearInterval(iv); setTimeout(next, cls==='dim'? 420 : 220); }
+    }, 12);
+  }
+  next();
+}
+document.getElementById('btnTerm').onclick = playTerm;
+/* reproducir automáticamente cuando entra en pantalla */
+new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting && !termBody.innerHTML){ playTerm(); } }); },{threshold:.4}).observe(document.querySelector('.term'));
+</script>
