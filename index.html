@@ -567,4 +567,7 @@ function playTerm(){
 document.getElementById('btnTerm').onclick = playTerm;
 /* reproducir automáticamente cuando entra en pantalla */
 new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting && !termBody.innerHTML){ playTerm(); } }); },{threshold:.4}).observe(document.querySelector('.term'));
-                                                                                         </script>
+</script>
+
+<!-- Vercel Web Analytics (contador de visitas) -->
+<script defer src="/_vercel/insights/script.js"></script>
